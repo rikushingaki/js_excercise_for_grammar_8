@@ -4,8 +4,8 @@
 //     1. 掃除
 //     2. 買い物
 //     3. 散歩
-// ここに変数「todo」を用意する
-todos = ['1.掃除', '2.買い物', '3.散歩'];
+// ここに変数「todos」を用意する
+const todos = ['掃除', '買い物', '散歩'];
 
 // ここに、Todoリストの機能を入力された文字によって使い分けるための文字列を配列で所持する
 //   - 変数名は「commands」とする
@@ -15,8 +15,7 @@ todos = ['1.掃除', '2.買い物', '3.散歩'];
 //     3. 削除
 //     4. 終了
 // ここに変数「commands」を用意する
-commands = ['確認', '追加', '削除', '終了'];
-
+const commands = ['確認', '追加', '削除', '終了'];
 
 // ここに、promptで入力したものを保持しておくための変数「input」を用意する
 let input;
@@ -31,14 +30,14 @@ let input;
 //     4. 「終了」と入力された時: Consoleに'終了します'と表示して、Whileループを終了する
 //   - 「確認」「追加」「削除」「終了」以外がinputに代入されたら「「確認,追加,削除,終了」以外は入力できません」とConsoleに表示する
 while(input !== commands[3]) {
-    input = prompt('「' + commands + '」のいずれかを入力してください');
+    input = prompt('「'+ commands + '」のいずれかを入力してください'  );
     if(input === commands[0]) {
         showTodos();
     } else if(input === commands[1]) {
         createTodo();
     } else if(input === commands[2]) {
         deleteTodo();
-    } else if(input === commands[3]){
+    } else if(input === commands[3]) {
         console.log('終了します');
     } else {
         console.log('「確認,追加,削除,終了」以外は入力できません');
@@ -74,10 +73,10 @@ showTodos();
 // ここにshowTodos関数を作る
 function showTodos() {
     console.log('========================');
-    console.log('現在持っているのタスク一覧');
+    console.log('現在持っているのタスク');
     console.log('========================');
-    if(todos.length < 0) {
-        todos.forEach((todo,index) => {
+    if(todos.length > 0) {
+        todos.forEach((todo, index) => {
             console.log(index + ' : ' + todo);
         });
     } else {
@@ -97,7 +96,7 @@ function showTodos() {
  */
 // ここにcreateTodo関数を作る
 function createTodo() {
-    todo = prompt('タスクを入力してください');
+    const todo = prompt('タスクを入力してください');
     if(todo) {
         todos.push(todo);
         alert('新しいタスクを追加しました。');
@@ -130,9 +129,9 @@ function createTodo() {
  */
 // ここにdeleteTodo関数を作る
 function deleteTodo() {
-    NumberString = prompt('削除するタスクの番号を指定してください');
-    parsedNumber = parseInt(NumberString,10);
-    if (isNaN(parsedNumber) || parsedNumber > todos.length || parsedNumber < 0) {
+    const numberString = prompt('削除するタスクの番号を指定してください');
+    const parsedNumber = parseInt(numberString, 10);
+    if (isNaN(parsedNumber) || parsedNumber >= todos.length || parsedNumber < 0) {
         alert('不正な値のためスキップします');
     } else {
         const deletedTodos = todos.splice(parsedNumber, 1);
